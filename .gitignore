@@ -30,7 +30,7 @@ sysinfo.txt
 *.unitypackage
 
 # GoogleVR SDK
-googlevr/
+**/Assets/GoogleVR/
 
 # Plugins
-plugins/
+**/Assets/Plugins/
