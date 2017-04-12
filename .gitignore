@@ -33,4 +33,5 @@ sysinfo.txt
 **/Assets/GoogleVR/
 
 # Plugins
-**/Assets/Plugins/
+/Assets/Plugins*
+
