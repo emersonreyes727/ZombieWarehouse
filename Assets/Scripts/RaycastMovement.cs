@@ -13,6 +13,8 @@ public class RaycastMovement : MonoBehaviour {
 	
 	private bool moving = false;
 
+	[SerializeField] private GameObject projectile;
+
 	RaycastHit hit;
 	float theDistance;
 
@@ -26,9 +28,6 @@ public class RaycastMovement : MonoBehaviour {
 		
 		Vector3 forwardDir = raycastHolder.transform.TransformDirection (Vector3.forward) * 100;
 		Debug.DrawRay (raycastHolder.transform.position, forwardDir, Color.green);
-
-		// int layerMask = 1 << 8;
-		// layerMask = ~layerMask;
 
 		if (Physics.Raycast (raycastHolder.transform.position, (forwardDir), out hit)) {
 
@@ -56,7 +55,9 @@ public class RaycastMovement : MonoBehaviour {
 				}
 			} else if (hit.collider.gameObject.tag == "zombie") {
 				// when zombie is blocking the ground raycast, you can shoot it.
-				Debug.Log ("shoot!");
+				if (Input.GetMouseButtonDown (0)) {
+					Instantiate (projectile, raycastHolder.transform.position, raycastHolder.transform.rotation);
+				};
 			}
 		}
 	}
