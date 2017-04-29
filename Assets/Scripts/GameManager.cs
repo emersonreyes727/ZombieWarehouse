@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Debug.Log (gameOver);
 	}
 	
 	// Update is called once per frame
@@ -53,4 +53,11 @@ public class GameManager : MonoBehaviour {
 		}
 	} 
 	*/
+
+
+	// gameover when zombie hits player
+	public void PlayerAttacked () {
+		gameOver = true;
+		Debug.Log (gameOver);
+	}
 }
