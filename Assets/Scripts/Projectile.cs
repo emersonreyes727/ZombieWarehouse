@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 	[SerializeField] private float force; // force of the projectile
 	private bool projectileLaunched = false; // did the projectile fired
 
+	int zombieHealth = 3;
+
 	// Use this for initialization
 	void Start () {
 		

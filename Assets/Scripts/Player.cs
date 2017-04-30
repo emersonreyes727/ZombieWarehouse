@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 	int playerHealth = 10;
-	int counter = 0;
 
 	// Use this for initialization
 	void Start () {

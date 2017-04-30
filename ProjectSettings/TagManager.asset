@@ -6,6 +6,7 @@ TagManager:
   tags:
   - movementCapable
   - zombie
+  - projectile
   layers:
   - Default
   - TransparentFX

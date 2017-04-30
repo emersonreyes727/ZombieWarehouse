@@ -12,6 +12,8 @@ public class ZombieController : MonoBehaviour {
 	private Animator anim;
 	private NavMeshAgent navMeshAgent;
 
+	private int zombieHealth = 3;
+
 	void Awake () {
 		Assert.IsNotNull (playerPosition);
 	}
@@ -30,5 +32,13 @@ public class ZombieController : MonoBehaviour {
 			anim.Play ("walk");
 			navMeshAgent.SetDestination (playerPosition.position);
 		}
+	}
+
+
+
+	void OnTriggerEnter(Collider Projectile) {
+		//Destroy(other.gameObject);
+		zombieHealth --;
+		Debug.Log (zombieHealth);
 	}
 }
