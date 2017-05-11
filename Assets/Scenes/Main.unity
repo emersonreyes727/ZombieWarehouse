@@ -27091,6 +27091,7 @@ MonoBehaviour:
   raycastIndicator: {fileID: 576231246}
   bullet: {fileID: 1361596311905590, guid: 31a85aecc4025406e97edb1a0138b7b7, type: 2}
   bulletResetPosition: {fileID: 546227988}
+  capCol: {fileID: 1526281517}
 --- !u!114 &344125685
 MonoBehaviour:
   m_ObjectHideFlags: 0
