@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Zombie
   - Bullet
+  - UI
   layers:
   - Default
   - TransparentFX

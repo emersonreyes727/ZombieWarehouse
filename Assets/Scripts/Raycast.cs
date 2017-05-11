@@ -11,6 +11,8 @@ public class Raycast : MonoBehaviour {
 
 	private int maxBullets = 10;
 	private float distance = 10f;
+	private float teleportDistance = 3f;
+	private float menuSpace = 1f;
 
 	private GameObject player;
 	private RaycastHit hit; 
@@ -38,7 +40,10 @@ public class Raycast : MonoBehaviour {
 			if (Physics.Raycast (transform.position, forward, out hit)) {
 				if (hit.collider.gameObject.tag == "Floor") {
 					// so that player can't teleport over a long distance
-					if (Vector3.Distance (player.transform.position, hit.point) < 3) {
+					if (Vector3.Distance (player.transform.position, hit.point) <= menuSpace) {
+						raycastIndicator.SetActive (false); // turn off raycast
+
+					} else if (Vector3.Distance (player.transform.position, hit.point) > menuSpace && Vector3.Distance (player.transform.position, hit.point) < teleportDistance) {
 						raycastIndicator.SetActive (true);
 
 						MoveRaycastIndicator ();
@@ -47,8 +52,7 @@ public class Raycast : MonoBehaviour {
 							Vector3 location = hit.point;
 							DashMove (location);
 						}
-
-					} else {
+					} else if (Vector3.Distance (player.transform.position, hit.point) >= teleportDistance) {
 						raycastIndicator.SetActive (false); // turn off raycast
 					}
 				}
@@ -58,6 +62,9 @@ public class Raycast : MonoBehaviour {
 					if (maxBullets > 0) {
 						FireProjectile ();
 					}
+				}
+				if (hit.collider.gameObject.tag == "UI") {
+					Debug.Log ("UI");
 				}
 			}
 		} else {
