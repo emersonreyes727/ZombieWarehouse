@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  productGUID: 089f70df48f324283943217cc5f237a8
+  productGUID: 1d45ce277f23b4cb6a4cca73a769c26d
   AndroidProfiler: 0
   defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: EmersonReyes
-  productName: UdacityCapstoneProject
+  productName: ZombieWarehouse
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -136,13 +136,8 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.EmersonReyes.UdacityCapstoneProject
-    Standalone: unity.DefaultCompany.TwdQuizGame
-    Tizen: com.Company.ProductName
-    iOS: com.Company.ProductName
-    tvOS: com.Company.ProductName
-  buildNumber:
-    iOS: 0
+    Android: com.EmersonReyes.ZombieWarehouse
+  buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
@@ -409,7 +404,7 @@ PlayerSettings:
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
-  ps4Passcode: 5PN2qmWqBlQ9wQj99nsQzldVI5ZuGXbE
+  ps4Passcode: dVI5ZuGXbEWRK5RhRXdCdG5nG5azdNMK
   ps4UseDebugIl2cppLibs: 0
   ps4pnSessions: 1
   ps4pnPresence: 1
@@ -456,7 +451,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: WRK5RhRXdCdG5nG5azdNMK66MuCV6GXi
+  psp2PackagePassword: 66MuCV6GXi5xr84P2R391UXaLHbavJvF
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -510,14 +505,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: TwdQuizGame
+  metroPackageName: The Warehouse
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: TwdQuizGame
+  metroApplicationDescription: The Warehouse
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -542,8 +537,8 @@ PlayerSettings:
   tizenGPSPermissions: 0
   tizenMicrophonePermissions: 0
   tizenDeploymentTarget: 
-  tizenDeploymentTargetType: 0
-  tizenMinOSVersion: 0
+  tizenDeploymentTargetType: -1
+  tizenMinOSVersion: 1
   n3dsUseExtSaveData: 0
   n3dsCompressStaticMem: 1
   n3dsExtSaveDataNumber: 0x12345

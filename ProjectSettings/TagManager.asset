@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - movementCapable
-  - zombie
-  - projectile
+  - Floor
+  - Zombie
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -16,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - zombie
+  - player
+  - bullet
   - 
   - 
   - 

@@ -4,23 +4,38 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class GameManager : MonoBehaviour {
+	[SerializeField] private GameObject player;
 
 	public static GameManager instance = null;
 
-	[SerializeField] private GameObject player;
-
+	//
 	private bool gameOver = false;
+	private bool hasKey = false;
+	private bool hasFood = false;
+	private bool hasMed = false;
 
-	// getters
+	//
 	public GameObject Player {
-		get { return player; }	
+		get { return player; }
 	}
 
 	public bool GameOver {
 		get { return gameOver; }
 	}
 
-	// run before void Start ()
+	public bool HasKey {
+		get { return hasKey; }
+	}
+
+	public bool HasFood {
+		get { return hasFood; }
+	}
+
+	public bool HasMed {
+		get { return hasMed; }
+	}
+
+	//
 	void Awake () {
 		if (instance == null) {
 			instance = this;
@@ -33,31 +48,20 @@ public class GameManager : MonoBehaviour {
 		Assert.IsNotNull (player);
 	}
 
-	// Use this for initialization
-	void Start () {
-		Debug.Log (gameOver);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	// this will run when the player is hit.
-	// it will pass the currentHp (health point)
-	/*public void PlayerHit (int currentHp) {
-		if (currentHp > 0) {
-			gameOver = false;
-		} else {
-			gameOver = true;
-		}
-	} 
-	*/
-
-
-	// gameover when zombie hits player
-	public void PlayerAttacked () {
+	//
+	public void GameIsOver () {
 		gameOver = true;
-		Debug.Log (gameOver);
+	}
+
+	public void PlayerHasKey () {
+		hasKey = true;
+	}
+
+	public void PlayerHasFood () {
+		hasFood = true;
+	}
+
+	public void PlayerHasMed () {
+		hasMed = true;
 	}
 }
