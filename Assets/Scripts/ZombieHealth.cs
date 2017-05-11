@@ -12,7 +12,10 @@ public class ZombieHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (health == 0) {
+		// set to "less than equals" to 0, NOT "equal" to 0
+		// sometimes when ontriggerenter is called it subtracts more than 1
+		// so the health ends up becoming a negative number
+		if (health <= 0) {
 			Debug.Log ("zombie dead!!!");
 			isAlive = false;
 		}	

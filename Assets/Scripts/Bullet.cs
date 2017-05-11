@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	private int force = 10;
+	private float force = 100f;
 	private Vector3 resetPosition = new Vector3 (0, -5, 0);
-	private int distance = 20;
+	private float distance = 20f;
 
 	private Rigidbody rb;
 
@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		// the force applied to the bullet
-		rb.AddForce (transform.forward * force, ForceMode.Impulse);
+		// use time.deltatime
+		rb.AddForce (transform.forward * (force * Time.deltaTime), ForceMode.Impulse);
 	}
 }

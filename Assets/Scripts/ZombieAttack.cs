@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieAttack : MonoBehaviour {
-	private int distance = 2;
+	private float distance = 2f;
 
 	private Animator anim;
 	private GameObject player;

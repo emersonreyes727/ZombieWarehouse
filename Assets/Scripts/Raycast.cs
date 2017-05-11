@@ -5,13 +5,9 @@ using UnityEngine.Assertions;
 
 public class Raycast : MonoBehaviour {
 	[SerializeField] private GameObject raycastIndicator;
-	[SerializeField] private GameObject bullet;
-	[SerializeField] private Transform bulletResetPosition;
-	[SerializeField] private CapsuleCollider capCol;
 
-	private int maxBullets = 10;
 	private float distance = 10f;
-	private float teleportDistance = 3f;
+	private float teleportDistance = 4f;
 	private float menuSpace = 1f;
 
 	private GameObject player;
@@ -20,9 +16,6 @@ public class Raycast : MonoBehaviour {
 	//
 	void Awake () {
 		Assert.IsNotNull (raycastIndicator);
-		Assert.IsNotNull (bullet);
-		Assert.IsNotNull (bulletResetPosition);
-		Assert.IsNotNull (capCol);
 	}
 
 	// Use this for initialization
@@ -39,10 +32,10 @@ public class Raycast : MonoBehaviour {
 
 			if (Physics.Raycast (transform.position, forward, out hit)) {
 				if (hit.collider.gameObject.tag == "Floor") {
-					// so that player can't teleport over a long distance
+					// disable the raycast so that the menu can be placed in front of the player
 					if (Vector3.Distance (player.transform.position, hit.point) <= menuSpace) {
 						raycastIndicator.SetActive (false); // turn off raycast
-
+					// enable the raycast
 					} else if (Vector3.Distance (player.transform.position, hit.point) > menuSpace && Vector3.Distance (player.transform.position, hit.point) < teleportDistance) {
 						raycastIndicator.SetActive (true);
 
@@ -52,19 +45,13 @@ public class Raycast : MonoBehaviour {
 							Vector3 location = hit.point;
 							DashMove (location);
 						}
+					// so that player can't teleport over a long distance
 					} else if (Vector3.Distance (player.transform.position, hit.point) >= teleportDistance) {
 						raycastIndicator.SetActive (false); // turn off raycast
 					}
-				}
+				} // turns of raycast when it hits the zombie
 				if (hit.collider.gameObject.tag == "Zombie") {
 					raycastIndicator.SetActive (false);
-
-					if (maxBullets > 0) {
-						FireProjectile ();
-					}
-				}
-				if (hit.collider.gameObject.tag == "UI") {
-					Debug.Log ("UI");
 				}
 			}
 		} else {
@@ -74,14 +61,6 @@ public class Raycast : MonoBehaviour {
 
 	private void MoveRaycastIndicator () {
 		raycastIndicator.transform.position = hit.point;
-	}
-
-	private void FireProjectile () {
-		if (Input.GetMouseButtonDown (0)) {
-			Instantiate (bullet, transform.position, transform.rotation, bulletResetPosition);
-			maxBullets--;
-			Debug.Log ("Fire!!!");
-		}
 	}
 
 	// moves the player smoothly 
