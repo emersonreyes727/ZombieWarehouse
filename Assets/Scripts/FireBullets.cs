@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class FireBullets : MonoBehaviour {
 	// the bullet clone goes to this empty parent gameobject
 	[SerializeField] private Transform bulletResetPosition;
 	[SerializeField] private GameObject bullet;
+	[SerializeField] private Text bulletsText;
 
 	private int maxBullets = 500;
 
@@ -14,6 +16,11 @@ public class FireBullets : MonoBehaviour {
 	void Awake () {
 		Assert.IsNotNull (bullet);
 		Assert.IsNotNull (bulletResetPosition);
+		Assert.IsNotNull (bulletsText);
+	}
+
+	void Update () {
+		bulletsText.text = "Bullets: " + maxBullets;
 	}
 	
 	// instead of using raycast in fixedupdate (it fires twice), use "event trigger" pointer click
