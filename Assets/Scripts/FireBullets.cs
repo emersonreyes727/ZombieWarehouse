@@ -8,7 +8,7 @@ public class FireBullets : MonoBehaviour {
 	[SerializeField] private Transform bulletResetPosition;
 	[SerializeField] private GameObject bullet;
 
-	private int maxBullets = 5;
+	private int maxBullets = 500;
 
 	// 
 	void Awake () {

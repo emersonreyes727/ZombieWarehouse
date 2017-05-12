@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 
 public class Raycast : MonoBehaviour {
 	[SerializeField] private GameObject raycastIndicator;
+	[SerializeField] private GameObject menu;
 
 	private float distance = 10f;
 	private float teleportDistance = 4f;
@@ -34,10 +35,12 @@ public class Raycast : MonoBehaviour {
 				if (hit.collider.gameObject.tag == "Floor") {
 					// disable the raycast so that the menu can be placed in front of the player
 					if (Vector3.Distance (player.transform.position, hit.point) <= menuSpace) {
+						menu.SetActive (true);
 						raycastIndicator.SetActive (false); // turn off raycast
 					// enable the raycast
 					} else if (Vector3.Distance (player.transform.position, hit.point) > menuSpace && Vector3.Distance (player.transform.position, hit.point) < teleportDistance) {
 						raycastIndicator.SetActive (true);
+						menu.SetActive (false);
 
 						MoveRaycastIndicator ();
 
@@ -48,6 +51,7 @@ public class Raycast : MonoBehaviour {
 					// so that player can't teleport over a long distance
 					} else if (Vector3.Distance (player.transform.position, hit.point) >= teleportDistance) {
 						raycastIndicator.SetActive (false); // turn off raycast
+						menu.SetActive (false);
 					}
 				} // turns of raycast when it hits the zombie
 				if (hit.collider.gameObject.tag == "Zombie") {
@@ -55,6 +59,7 @@ public class Raycast : MonoBehaviour {
 				}
 			}
 		} else {
+			menu.SetActive (true);
 			raycastIndicator.SetActive (false); // turn off raycast if game is over
 		}
 	}
