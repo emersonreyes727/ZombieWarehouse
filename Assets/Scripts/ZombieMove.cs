@@ -23,21 +23,23 @@ public class ZombieMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		// game is running and zombie is alive, zombie moves to player 
-		if (!GameManager.instance.GameOver && zombieHealth.IsAlive) {
-			nav.SetDestination (player.transform.position);
-		} 
-		// game is running and zombie is dead
-		if (!GameManager.instance.GameOver && !zombieHealth.IsAlive) {
-			anim.Play ("die");
-			nav.enabled = false;
-			capCol.enabled = false;
-			rb.isKinematic = true;
-			rb.detectCollisions = false;
-		} 
-		// game is over and zombie is alive
-		if (GameManager.instance.GameOver && zombieHealth.IsAlive) {
-			nav.SetDestination (Vector3.zero);
+		if (GameManager.instance.GameStart) {
+			// game is running and zombie is alive, zombie moves to player 
+			if (!GameManager.instance.GameOver && zombieHealth.IsAlive) {
+				nav.SetDestination (player.transform.position);
+			} 
+			// game is running and zombie is dead
+			if (!GameManager.instance.GameOver && !zombieHealth.IsAlive) {
+				anim.Play ("die");
+				nav.enabled = false;
+				capCol.enabled = false;
+				rb.isKinematic = true;
+				rb.detectCollisions = false;
+			} 
+			// game is over and zombie is alive
+			if (GameManager.instance.GameOver && zombieHealth.IsAlive) {
+				nav.SetDestination (Vector3.zero);
+			}
 		}
 	}
 }

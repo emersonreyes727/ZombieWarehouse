@@ -26,41 +26,43 @@ public class Raycast : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		// if the game is NOT over
-		if (!GameManager.instance.GameOver) {
-			Vector3 forward = transform.TransformDirection (Vector3.forward) * distance;
-			Debug.DrawRay (transform.position, forward, Color.red);
+		if (GameManager.instance.GameStart) {
+			// if the game is NOT over
+			if (!GameManager.instance.GameOver) {
+				Vector3 forward = transform.TransformDirection (Vector3.forward) * distance;
+				Debug.DrawRay (transform.position, forward, Color.red);
 
-			if (Physics.Raycast (transform.position, forward, out hit)) {
-				if (hit.collider.gameObject.tag == "Floor") {
-					// disable the raycast so that the menu can be placed in front of the player
-					if (Vector3.Distance (player.transform.position, hit.point) <= menuSpace) {
-						menu.SetActive (true);
-						raycastIndicator.SetActive (false); // turn off raycast
-					// enable the raycast
-					} else if (Vector3.Distance (player.transform.position, hit.point) > menuSpace && Vector3.Distance (player.transform.position, hit.point) < teleportDistance) {
-						raycastIndicator.SetActive (true);
-						menu.SetActive (false);
+				if (Physics.Raycast (transform.position, forward, out hit)) {
+					if (hit.collider.gameObject.tag == "Floor") {
+						// disable the raycast so that the menu can be placed in front of the player
+						if (Vector3.Distance (player.transform.position, hit.point) <= menuSpace) {
+							menu.SetActive (true);
+							raycastIndicator.SetActive (false); // turn off raycast
+							// enable the raycast
+						} else if (Vector3.Distance (player.transform.position, hit.point) > menuSpace && Vector3.Distance (player.transform.position, hit.point) < teleportDistance) {
+							raycastIndicator.SetActive (true);
+							menu.SetActive (false);
 
-						MoveRaycastIndicator ();
+							MoveRaycastIndicator ();
 
-						if (Input.GetMouseButtonDown (0)) {
-							Vector3 location = hit.point;
-							DashMove (location);
+							if (Input.GetMouseButtonDown (0)) {
+								Vector3 location = hit.point;
+								DashMove (location);
+							}
+							// so that player can't teleport over a long distance
+						} else if (Vector3.Distance (player.transform.position, hit.point) >= teleportDistance) {
+							raycastIndicator.SetActive (false); // turn off raycast
+							menu.SetActive (false);
 						}
-					// so that player can't teleport over a long distance
-					} else if (Vector3.Distance (player.transform.position, hit.point) >= teleportDistance) {
-						raycastIndicator.SetActive (false); // turn off raycast
-						menu.SetActive (false);
+					} // turns of raycast when it hits the zombie
+					if (hit.collider.gameObject.tag == "Zombie") {
+						raycastIndicator.SetActive (false);
 					}
-				} // turns of raycast when it hits the zombie
-				if (hit.collider.gameObject.tag == "Zombie") {
-					raycastIndicator.SetActive (false);
 				}
-			}
-		} else {
-			menu.SetActive (true);
-			raycastIndicator.SetActive (false); // turn off raycast if game is over
+			} else {
+				menu.SetActive (true);
+				raycastIndicator.SetActive (false); // turn off raycast if game is over
+			}	
 		}
 	}
 

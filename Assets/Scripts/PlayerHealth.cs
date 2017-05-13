@@ -5,14 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class PlayerHealth : MonoBehaviour {
-	[SerializeField] private Transform cube;
 	[SerializeField] private Text life;
 
 	private int health = 10;
 
 	//
 	void Awake () {
-		Assert.IsNotNull (cube);
 		Assert.IsNotNull (life);
 	}
 	
@@ -27,9 +25,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-			Debug.Log ("attack the player");
-			cube.position = new Vector3 (0, 1, 0);
-
-			health --;
+		health --;
+		Debug.Log ("attack the player");
 	}
 }

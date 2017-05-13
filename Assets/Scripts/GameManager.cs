@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
 	//
 	private bool gameOver = false;
+	private bool gameStart = false;
 	private bool hasKey = false;
 	private bool hasFood = false;
 	private bool hasMed = false;
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour {
 
 	public bool GameOver {
 		get { return gameOver; }
+	}
+
+	public bool GameStart {
+		get { return gameStart; }
 	}
 
 	public bool HasKey {
@@ -51,6 +56,10 @@ public class GameManager : MonoBehaviour {
 	//
 	public void GameIsOver () {
 		gameOver = true;
+	}
+
+	public void GameHasStarted () {
+		gameStart = true;
 	}
 
 	public void PlayerHasKey () {

@@ -18,10 +18,13 @@ public class ZombieAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GameManager.instance.GameOver && zombieHealth.IsAlive) {
-			// if zombie gets too close it will attack
-			if (Vector3.Distance (transform.position, player.transform.position) < distance) {
-				anim.Play ("attack");
+		// game has started
+		if (GameManager.instance.GameStart) {
+			if (!GameManager.instance.GameOver && zombieHealth.IsAlive) {
+				// if zombie gets too close it will attack
+				if (Vector3.Distance (transform.position, player.transform.position) < distance) {
+					anim.Play ("attack");
+				}
 			}
 		}
 	}
