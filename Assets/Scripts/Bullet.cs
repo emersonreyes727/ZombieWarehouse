@@ -17,9 +17,9 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void Update () {
-		// if the bullet is far away from the resetposition
+		// if the bullet is far away from the player
 		// just let the bullet fly away
-		// don't let the gameobjects to stop the bullet
+		// don't let the gameobjects stop the bullet
 		if (Vector3.Distance (transform.position, player.transform.position) > distance) {
 			transform.position = resetPosition;
 		}

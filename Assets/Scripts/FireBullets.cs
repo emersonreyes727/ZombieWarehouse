@@ -9,6 +9,9 @@ public class FireBullets : MonoBehaviour {
 	[SerializeField] private Transform bulletResetPosition;
 	[SerializeField] private GameObject bullet;
 	[SerializeField] private Text bulletsText;
+	[SerializeField] private AudioClip soundFx;
+
+	private GvrAudioSource gunFire;
 
 	private int maxBullets = 500;
 
@@ -17,6 +20,11 @@ public class FireBullets : MonoBehaviour {
 		Assert.IsNotNull (bullet);
 		Assert.IsNotNull (bulletResetPosition);
 		Assert.IsNotNull (bulletsText);
+	}
+
+	// Use this for initialization
+	void Start () {
+		gunFire = GetComponent<GvrAudioSource> ();
 	}
 
 	void Update () {
@@ -29,6 +37,7 @@ public class FireBullets : MonoBehaviour {
 	public void FireProjectile () {
 		if (maxBullets > 0) {
 			Instantiate (bullet, transform.position, transform.rotation, bulletResetPosition);
+			gunFire.PlayOneShot (soundFx);
 			maxBullets--;
 			Debug.Log ("Fire!!!");
 		}

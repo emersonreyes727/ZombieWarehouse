@@ -8,6 +8,7 @@ public class ItemsToCollect : MonoBehaviour {
 	[SerializeField] private GameObject key;
 	[SerializeField] private GameObject food;
 	[SerializeField] private GameObject med;
+	[SerializeField] private GameObject garageDoor;
 
 	[SerializeField] private Text keyText;
 	[SerializeField] private Text foodText;
@@ -16,6 +17,7 @@ public class ItemsToCollect : MonoBehaviour {
 	private string keyStatus;
 	private string foodStatus;
 	private string medStatus;
+	private int height = 3;
 
 
 	//
@@ -55,6 +57,7 @@ public class ItemsToCollect : MonoBehaviour {
 
 	public void PlayerHasKey () {
 		if (!GameManager.instance.GameOver) {
+			garageDoor.transform.position = new Vector3 (garageDoor.transform.position.x, garageDoor.transform.position.y + height, garageDoor.transform.position.z);
 			key.SetActive (false);
 			GameManager.instance.PlayerHasKey ();
 		} else {
