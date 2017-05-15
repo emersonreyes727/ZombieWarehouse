@@ -5,20 +5,22 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 	private float force = 100f;
 	private Vector3 resetPosition = new Vector3 (0, -5, 0);
-	private float distance = 20f;
+	private float distance = 40f;
 
 	private Rigidbody rb;
+	private GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		player = GameManager.instance.Player;
 	}
 
 	void Update () {
 		// if the bullet is far away from the resetposition
 		// just let the bullet fly away
 		// don't let the gameobjects to stop the bullet
-		if (Vector3.Distance (transform.position, resetPosition) > distance) {
+		if (Vector3.Distance (transform.position, player.transform.position) > distance) {
 			transform.position = resetPosition;
 		}
 	}
